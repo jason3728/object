@@ -1,0 +1,68 @@
+#include<iostream>
+#include<iomanip>
+#include<ctime>
+#include<cstdlib>
+using namespace std ;
+
+const int WLTSize1 = 38, WLTSize2 = 8 ;
+
+void initArray1(int array[]){
+	for(int i=0 ; i<=WLTSize1-1 ; i++){
+		array[i] = i ;
+	}
+}
+
+void initArray2(int array[]){
+	for(int j=0 ; j<=WLTSize2-1 ; j++){
+		array[j] = j ;
+	}
+}
+
+void randomArray1(int array[]){
+	int i, j, a, b;
+	initArray1(array) ;
+	for(j=WLTSize1-1 ; j>0 ; j--){
+		a = rand() % (j+1) ;
+		
+		b = array[a] ;
+		array[a] = array[j] ;
+		array[j] = b ;
+	}
+}
+
+void randomArray2(int array[]){
+	int i, j, a, b;
+	initArray2(array) ;
+	for(j=WLTSize2-1 ; j>0 ; j--){
+		a = rand() % (j+1) ;
+		
+		b = array[a] ;
+		array[a] = array[j] ;
+		array[j] = b ;
+	}
+}
+
+void printACard(int n)
+{
+	cout << n+1 ; 
+}
+
+int main(){
+	int a[WLTSize1] ;
+	int b[WLTSize2] ;
+
+	srand(time(0)) ;
+	
+	randomArray1(a) ;
+	cout << "第一區" << setw(3) ;
+	for(int i=0 ; i<6 ; i++){
+		printACard(a[i]) ;
+		cout << setw(3) ;
+	}
+	cout << endl ;
+	cout << "第二區" << setw(3) ;
+	randomArray2(b) ;
+	for(int j=0 ; j<1 ; j++){
+		printACard(b[j]) ;
+	}
+}
