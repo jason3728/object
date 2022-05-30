@@ -1,0 +1,59 @@
+#include<iostream>
+#include<iomanip>
+#include<algorithm>
+#include<ctime>
+#include<cstdlib>
+using namespace std ;
+
+const int GTSize = 39 ;
+
+void initArray(int array[]){
+	for(int i=0 ; i<=GTSize-1 ; i++){
+		array[i] = i ;
+	}
+}
+
+void randomArray3(int array[]){
+	int i , j , a , b ;
+	initArray(array) ;
+	for(j=GTSize-1 ; j>0 ; j--){
+		a = rand() % (j+1) ;
+		
+		b = array[a] ;
+		array[a] = array[j] ;
+		array[j] = b ;
+	}
+}
+
+void printACard3(int n)
+{
+	cout << n+1 ; 
+}
+
+int main(){
+	int arr[6] , a[GTSize];
+	int b;
+	srand(time(0)) ;
+	
+	randomArray3(a) ;
+	for(int i=0 ; i<5 ; i++){
+		printACard3(a[i]) ;
+		cout << setw(3) ;
+		arr[i]=a[i]+1;
+	}
+	cout << endl << "按下1，大小排序";
+	cin >> b;
+	if(b==1)
+	{
+		sort(arr, arr+5);
+		for(int i=0; i<5; i++)
+		{
+			cout << arr[i] << " ";
+		}
+		cout << endl;
+	}
+	if(b!=1)
+	{
+		cout << "結束" << endl; 
+	}
+}
